@@ -1,0 +1,67 @@
+.header.item a {
+	font-size: 1.4em;
+	letter-spacing: 2px;
+}
+
+body {
+	font-family: 'Open Sans', sans-serif;
+	background-color: #f7f7f7;
+}
+
+.main {
+	margin-top: 80px;
+}
+
+.ui.segment.footer {
+	margin-top: 50px;
+	padding: 20px 0;
+}
+
+.side-bar.ui.card {
+	width: 100%;
+}
+
+.tag-list a {
+	margin: 2px 2px !important;
+	padding: 5px !important;
+	color: #fdfdfd !important;
+	background-color: steelblue;
+	border-radius: 15px;
+}
+
+.category {
+	padding-left: 20px !important;
+}
+
+.tag-list.ui.horizontal.list {
+	display: block;
+}
+
+.pagination-wrapper {
+	margin-top: 50px;
+	text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+	.main {
+		margin-top: 200px;
+	}
+}
+
+.post {
+	width: 100% !important;
+}
+
+.ui.segment.items > item.content {
+	padding: 10px;
+}
+
+pre {
+	overflow: auto;
+}
+
+pre > code {
+	padding: 1rem;
+	word-wrap: normal;
+	display: block;
+}

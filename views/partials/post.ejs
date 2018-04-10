@@ -1,0 +1,20 @@
+
+<div class="ui segment items">
+  <div class='item'>
+    <div class='content'>
+      <div class='header'>
+        <%= post.title %></h1>
+      </div>
+      <div class='meta'>
+        <span class="date">
+          <%=
+            formatDate(post.timestamp);
+          %>
+        </span>
+      </div>
+      <div class='description'>
+        <%- post.content %>
+      </div>
+    </div>
+  </div>
+</div>

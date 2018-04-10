@@ -1,0 +1,33 @@
+<div class="ui container">
+  <form class="ui form" action="/posts" method="POST">
+    <div class="field">
+      <label>Title</label>
+      <input type="text" name="title">
+    </div>
+    <div class="field">
+      <label>Category</label>
+      <div class="ui selection dropdown">
+        <input type="hidden" name="category">
+        <i class="dropdown icon"></i>
+        <div class="default text">Content's Category</div>
+        <div class="menu">
+          <div class="item" data-value="python">Python</div>
+          <div class="item" data-value="javacript">Javacript</div>
+          <div class="item" data-value="webdesign">Web Design</div>
+          <div class="item" data-value="database">Database</div>
+          <div class="item" data-value="else">Something Else</div>
+        </div>
+      </div>
+    </div>
+    <div class="field">
+      <label>Content</label>
+      <textarea name="content"></textarea>
+    </div>
+    <div class="field">
+      <button class="ui big blue button">Submit</button>
+    </div>
+  </form>
+</div>
+<script type="text/javascript">
+$('.ui.dropdown').dropdown();
+</script>

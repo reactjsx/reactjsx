@@ -1,0 +1,50 @@
+
+<%
+  posts.forEach(function(post) {
+%>  <div class='ui segment items'>
+      <div class="item">
+        <div class="content">
+          <div class='header'>
+            <a><%= post.title %></a>
+          </div>
+          <div class='meta'>
+            <span class="date">
+              <%=
+                formatDate(post.timestamp);
+              %>
+            </span>
+          </div>
+          <div class='description'>
+            <%- post.content.slice(0, 400) + '...' %>
+          </div>
+          <div class='extra'>
+            <a class='ui positive button' href='/posts/<%= post._id %>'>
+              Continue to post
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+<%
+  })
+%>
+
+<div class="pagination-wrapper">
+  <div class="ui pagination menu">
+    <a class="active item">
+      1
+    </a>
+    <div class="disabled item">
+      ...
+    </div>
+    <a class="item">
+      10
+    </a>
+    <a class="item">
+      11
+    </a>
+    <a class="item">
+      12
+    </a>
+  </div>
+</div>

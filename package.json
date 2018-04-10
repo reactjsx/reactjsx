@@ -1,0 +1,26 @@
+{
+  "name": "techexplained",
+  "version": "1.0.0",
+  "description": "Tech Explained by Trung Tran",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Trung Tran",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "connect-mongo": "^2.0.1",
+    "ejs": "^2.5.7",
+    "express": "^4.16.2",
+    "express-sanitizer": "^1.0.3",
+    "express-session": "^1.15.6",
+    "mongoose": "^5.0.9",
+    "morgan": "^1.9.0",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "passport-local-mongoose": "^5.0.0",
+    "prismjs": "^1.13.0"
+  }
+}
