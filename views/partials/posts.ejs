@@ -3,7 +3,7 @@
   posts.forEach(function(post) {
 %>  <div class='ui segment items'>
       <div class="item">
-        <div class="content">
+        <div class="content post">
           <div class='header'>
             <a><%= post.title %></a>
           </div>
@@ -18,7 +18,7 @@
             <%- post.content.slice(0, 400) + '...' %>
           </div>
           <div class='extra'>
-            <a class='ui positive button' href='/posts/<%= post._id %>'>
+            <a class='ui right floated green basic button' href='/posts/<%= post._id %>'>
               Continue to post
             </a>
           </div>

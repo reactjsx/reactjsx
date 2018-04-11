@@ -3,11 +3,6 @@
 	letter-spacing: 2px;
 }
 
-body {
-	font-family: 'Open Sans', sans-serif;
-	background-color: #f7f7f7;
-}
-
 .main {
 	margin-top: 80px;
 }
@@ -48,10 +43,6 @@ body {
 	}
 }
 
-.post {
-	width: 100% !important;
-}
-
 .ui.segment.items > item.content {
 	padding: 10px;
 }
@@ -64,4 +55,17 @@ pre > code {
 	padding: 1rem;
 	word-wrap: normal;
 	display: block;
+}
+
+div.ui.items.segment {
+	border-radius: 20px;
+	line-height: 1.6875rem;
+}
+
+.header a {
+	line-height: 1.4285em;
+}
+
+.content.post {
+	padding: 10px !important;
 }
