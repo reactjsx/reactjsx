@@ -39,7 +39,7 @@
 
 @media screen and (max-width: 768px) {
 	.main {
-		margin-top: 200px;
+		margin-top: 150px;
 	}
 }
 
@@ -68,4 +68,22 @@ div.ui.items.segment {
 
 .content.post {
 	padding: 10px !important;
+}
+
+.social {
+	color: black !important;
+}
+
+.social :hover {
+	color: green !important;
+}
+
+.main-body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.main {
+  flex: 1;
 }
