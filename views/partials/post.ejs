@@ -1,22 +1,11 @@
-
-<div class="ui segment items">
-  <div class='item'>
-    <div class='content post'>
-      <div class='header'>
-        <%= post.title %></h1>
-      </div>
-      <div class='meta'>
-        <span class="date">
-          <%=
-            formatDate(post.timestamp);
-          %>
-        </span>
-      </div>
-      <div class='description'>
-        <%- post.content %>
-      </div>
-    </div>
-  </div>
+<h1 class="ui header"><%= post.title %></h1>
+<div class="date">
+  <%=
+    formatDate(post.timestamp);
+  %>
+</div>
+<div class="post">
+  <%- post.content %>
 </div>
 
 <div class="ui section divider"></div>
@@ -26,7 +15,7 @@
     <div class="image">
       <img src="/img/bio-photo.jpg">
     </div>
-    <div class="content">
+    <div class="middle aligned content">
       <div class="header">
         Trung Tran
       </div>
@@ -34,8 +23,29 @@
         Author
       </div>
       <div class="description">
-        <p></p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque eleifend sem eu tincidunt mattis. Curabitur sed risus id leo rhoncus tincidunt. Vestibulum nunc turpis, mattis sed pellentesque id, auctor quis elit. Nunc mollis augue eget sodales facilisis. In at maximus neque. Sed vehicula turpis ante, sed rutrum quam vulputate nec. Praesent ullamcorper scelerisque erat et molestie. Donec cursus venenatis orci id scelerisque.</p>
+        <p></p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque eleifend sem eu tincidunt mattis.</p>
       </div>
     </div>
   </div>
 </div>
+
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+
+var disqus_config = function () {
+this.page.url = `https://reactjsx.org/posts/${post._id}`;
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://reactjsx.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>

@@ -1,5 +1,6 @@
 const express = require('express'),
       app = express(),
+      helmet = require('helmet'),
       bodyParser = require('body-parser'),
       mongoose = require('mongoose'),
       utils = require('./public/javascript/utils'),
@@ -26,6 +27,7 @@ app.use(session({
     })
 }));
 
+app.use(helmet());
 app.use(express.static('public'));
 app.set('view engine', 'ejs');
 app.use(passport.initialize());

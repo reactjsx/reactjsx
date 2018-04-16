@@ -1,81 +1,75 @@
 .header.item a {
-	font-size: 1.4em;
-	letter-spacing: 2px;
+  font-size: 1.4em;
+  letter-spacing: 2px;
 }
 
 .main {
-	margin-top: 80px;
+  margin-top: 20px;
 }
 
 .ui.segment.footer {
-	margin-top: 50px;
-	padding: 20px 0;
+  margin-top: 50px;
+  padding: 20px 0;
 }
 
 .side-bar.ui.card {
-	width: 100%;
+  width: 100%;
 }
 
 .tag-list a {
-	margin: 2px 2px !important;
-	padding: 5px !important;
-	color: #fdfdfd !important;
-	background-color: steelblue;
-	border-radius: 15px;
+  margin: 2px 2px !important;
+  padding: 5px !important;
+  color: #fdfdfd !important;
+  background-color: steelblue;
+  border-radius: 15px;
 }
 
 .category {
-	padding-left: 20px !important;
+  padding-left: 20px !important;
 }
 
 .tag-list.ui.horizontal.list {
-	display: block;
+  display: block;
 }
 
 .pagination-wrapper {
-	margin-top: 50px;
-	text-align: center;
-}
-
-@media screen and (max-width: 768px) {
-	.main {
-		margin-top: 150px;
-	}
+  margin-top: 50px;
+  text-align: center;
 }
 
 .ui.segment.items > item.content {
-	padding: 10px;
+  padding: 10px;
 }
 
 pre {
-	overflow: auto;
+  overflow: auto;
 }
 
 pre > code {
-	padding: 1rem;
-	word-wrap: normal;
-	display: block;
+  padding: 1rem;
+  word-wrap: normal;
+  display: block;
 }
 
 div.ui.items.segment {
-	border-radius: 20px;
-	line-height: 1.6875rem;
+  border-radius: 20px;
+  line-height: 1.6875rem;
 }
 
 .header a {
-	line-height: 1.4285em;
+  line-height: 1.4285em;
 }
 
 .content.post {
-	padding: 10px !important;
+  padding: 10px !important;
 }
 
 .social {
-	color: black !important;
+  color: black !important;
 }
 
 .social :hover {
-	color: green !important;
+  color: green !important;
 }
 
 .main-body {
@@ -86,4 +80,34 @@ div.ui.items.segment {
 
 .main {
   flex: 1;
+}
+
+.post {
+  font-size: 21px !important;
+  line-height: 1.6;
+  color: rgba(0, 0, 0, 0.8);
+  letter-spacing: -0.003em;
+}
+
+.content.post {
+  font-size: 16px !important;
+  line-height: 1.6;
+  color: rgba(0, 0, 0, 0.8);
+  letter-spacing: -0.003em;
+}
+
+.extra a {
+  border-radius: 30px !important;
+  font-size: 16px !important;
+}
+
+.post p {
+  margin-top: 30px;
+  margin-bottom: 0;
+}
+
+.date {
+  font-size: 20px;
+  font-style: italic;
+  color: steelblue;
 }
