@@ -72,7 +72,7 @@ app.get('/posts/new', isLoggedIn, (req, res) => {
   res.render('new');
 });
 
-app.post('/posts', (req, res) => {
+app.post('/posts', isLoggedIn, (req, res) => {
   const title = req.sanitize(req.body.title);
   const category = req.sanitize(req.body.category);
   const content = req.sanitize(req.body.content);
@@ -117,24 +117,29 @@ app.post('/login', passport.authenticate('local', {
 }), (req, res) => {
 });
 
-app.get('/register', (req, res) => {
-  res.render('register');
+app.get('/logout', (req, res) => {
+  req.logout();
+  res.redirect('/');
 });
 
-app.post('/register', (req, res) => {
-  User.register(new User({
-    username: req.body.username
-  }), req.body.password, (err, user) => {
-    if (err) {
-      console.log(err);
-      return res.render('/register');
-    } else {
-      passport.authenticate('local')(req, res, () => {
-        res.render('new');
-      });
-    }
-  });
-});
+// app.get('/register', (req, res) => {
+//   res.render('register');
+// });
+
+// app.post('/register', (req, res) => {
+//   User.register(new User({
+//     username: req.body.username
+//   }), req.body.password, (err, user) => {
+//     if (err) {
+//       console.log(err);
+//       return res.render('/register');
+//     } else {
+//       passport.authenticate('local')(req, res, () => {
+//         res.render('new');
+//       });
+//     }
+//   });
+// });
 
 app.get('/search', (req, res) => {
   console.log(req.query.searchQuerry);
