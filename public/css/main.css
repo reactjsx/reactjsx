@@ -116,3 +116,12 @@ div.ui.items.segment {
     margin-top: 180px;
   }
 }
+
+.ui.card > .image {
+  background: white;
+}
+
+.ui.card > .image > img {
+  width: 80%;
+  margin: 20px auto;
+}

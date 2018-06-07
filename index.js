@@ -24,7 +24,7 @@ app.use(session({
       url: 'mongodb://techexplained:thaonguyen2604@ds121225.mlab.com:21225/tech_explained',
       ttl: 60,
       autoRemove: 'interval',
-      autoRemoveInterval: 10 // In minutes. Default
+      autoRemoveInterval: 60 // In minutes. Default
     })
 }));
 
@@ -126,22 +126,22 @@ app.use('/', postRoute);
 // });
 
 
-// app.get('/search', (req, res) => {
-//   console.log(req.query.searchQuerry);
-//   Post.find({ $text: { $search: req.query.searchQuerry } },
-//     { score : { $meta: 'textScore' } }
-//   ).sort( { score: { $meta: "textScore" } })
-//   .exec((err, foundPosts) => {
-//     if (err) {
-//       console.log(err);
-//     } else {
-//       res.render('search_result', {
-//         posts: foundPosts,
-//         formatDate: utils.formatDate
-//       });
-//     }
-//   });
-// });
+app.get('/search', (req, res) => {
+  console.log(req.query.searchQuerry);
+  Post.find({ $text: { $search: req.query.searchQuerry } },
+    { score : { $meta: 'textScore' } }
+  ).sort( { score: { $meta: "textScore" } })
+  .exec((err, foundPosts) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.render('search_result', {
+        posts: foundPosts,
+        formatDate: utils.formatDate
+      });
+    }
+  });
+});
 
 app.listen(process.env.PORT, process.env.IP, function() {
   console.log('Server has started!');

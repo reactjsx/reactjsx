@@ -31,20 +31,18 @@
 
 <div class="pagination-wrapper">
   <div class="ui pagination menu">
-    <a class="active item">
-      1
+    <% if (previousPage) { %>
+      <a class="item" href='/posts/?page=<%= previousPage %>'>
+        Previous
+      </a>
+    <% } %>
+    <a class="active item" href='/posts/?page=2'>
+      Page <%= currentPage %>
     </a>
-    <div class="disabled item">
-      ...
-    </div>
-    <a class="item">
-      10
-    </a>
-    <a class="item">
-      11
-    </a>
-    <a class="item">
-      12
-    </a>
+    <% if (nextPage) { %>
+      <a class="item" href='/posts/?page=<%= nextPage %>'>
+        Next
+      </a>
+    <% } %>
   </div>
 </div>

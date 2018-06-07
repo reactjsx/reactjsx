@@ -14,7 +14,7 @@ const isLoggedIn = (req, res, next) => {
   if (req.isAuthenticated()) {
     return next();
   }
-  res.redirect('/login');
+  res.redirect('/');
 };
 
 route.get('/', (req, res) => {
@@ -22,13 +22,26 @@ route.get('/', (req, res) => {
 });
 
 route.get('/posts', function(req, res) {
+  let currentPage;
+  const postCount = 5;
+  if (req.query.page) {
+    currentPage = Number(req.query.page) - 1;
+  } else {
+    currentPage = 0;
+  }
   Post.find({}, function(err, foundPosts) {
+    foundPosts = foundPosts.sort((a, b) => b.timestamp - a.timestamp);
     if (err) {
       console.log(err);
     } else {
+      const previousPage = currentPage > 0 ? currentPage : null;
+      const nextPage = (currentPage + 1) * postCount < foundPosts.length ? currentPage + 2 : null;
       res.render('index', {
-        posts: foundPosts,
-        formatDate: utils.formatDate
+        posts: foundPosts.slice(currentPage * postCount, (currentPage + 1) * postCount),
+        formatDate: utils.formatDate,
+        currentPage: currentPage + 1,
+        previousPage: previousPage,
+        nextPage: nextPage
       });
     }
   });
@@ -55,29 +68,7 @@ route.post('/posts', isLoggedIn, (req, res) => {
     if (err) {
       console.log(err);
     } else {
-      res.redirect('/posts');
-    }
-  });
-});
-
-route.post('/posts', isLoggedIn, (req, res) => {
-  const title = req.sanitize(req.body.title);
-  const category = req.sanitize(req.body.category);
-  const content = req.sanitize(req.body.content);
-    
-  const new_post = {
-    title: title,
-    category: category,
-    content: content,
-    timestamp: Date.now(),
-    tags: ''
-  };
-    
-  Post.create(new_post, (err, post) => {
-    if (err) {
-      console.log(err);
-    } else {
-      res.redirect('/posts');
+      res.redirect(`/posts/${post._id}`);
     }
   });
 });
