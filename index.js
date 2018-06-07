@@ -22,9 +22,9 @@ app.use(session({
     saveUninitialized: false,
     store: new MongoStore({
       url: 'mongodb://techexplained:thaonguyen2604@ds121225.mlab.com:21225/tech_explained',
-      ttl: 60,
+      ttl: 24 * 60 * 60,
       autoRemove: 'interval',
-      autoRemoveInterval: 60 // In minutes. Default
+      autoRemoveInterval: 600 // In minutes. Default
     })
 }));
 

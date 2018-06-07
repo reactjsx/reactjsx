@@ -89,6 +89,18 @@ div.ui.items.segment {
   letter-spacing: -0.003em;
 }
 
+.post .note {
+  font-size: 16px !important;
+}
+
+.post .highlight {
+  background: lightblue;
+}
+
+.main h1 {
+  font-size: 2em;
+}
+
 .content.post {
   font-size: 16px !important;
   line-height: 1.6;

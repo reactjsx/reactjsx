@@ -15,7 +15,11 @@
             </span>
           </div>
           <div class='description'>
-            <%- post.content.slice(0, 400) + '...' %>
+            <%
+              const indexOfPre = post.toString().indexOf('<pre>');
+              const endIndex = indexOfPre === -1 ? 400 : Math.min(400, indexOfPre);
+            %>
+            <%- post.content.slice(0, endIndex) + '...' %>
           </div>
           <div class='extra'>
             <a class='ui right floated green basic button' href='/posts/<%= post._id %>'>

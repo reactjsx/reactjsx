@@ -1,9 +1,10 @@
-<h1 class="ui header"><%= post.title %></h1>
+<h1><%= post.title %></h1>
 <div class="date">
   <%=
     formatDate(post.timestamp);
   %>
 </div>
+<h4><%= post.content.split(/[ ,.!\\?]+/).length % 200 %> min read</h4>
 <div class="post">
   <%- post.content %>
 </div>
