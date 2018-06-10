@@ -143,9 +143,14 @@ app.get('/search', (req, res) => {
     if (err) {
       console.log(err);
     } else {
-      res.render('search_result', {
-        posts: foundPosts,
-        formatDate: utils.formatDate
+      const previousPage = currentPage > 0 ? currentPage : null;
+      const nextPage = (currentPage + 1) * postCount < foundPosts.length ? currentPage + 2 : null;
+      res.render('index', {
+        posts: foundPosts.slice(currentPage * postCount, (currentPage + 1) * postCount),
+        formatDate: utils.formatDate,
+        currentPage: currentPage + 1,
+        previousPage: previousPage,
+        nextPage: nextPage
       });
     }
   });
