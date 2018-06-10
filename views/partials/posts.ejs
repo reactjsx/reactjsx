@@ -16,10 +16,10 @@
           </div>
           <div class='description'>
             <%
-              const indexOfPre = post.toString().indexOf('<pre>');
-              const endIndex = indexOfPre === -1 ? 400 : Math.min(400, indexOfPre);
+              let displayPost = post.content.slice(0, post.content.indexOf('<\/p>'));
+              displayPost = displayPost.replace(/<\/?\D{1,4}\d?>/g, '');
             %>
-            <%- post.content.slice(0, endIndex) + '...' %>
+            <%- displayPost + '...' %>
           </div>
           <div class='extra'>
             <a class='ui right floated green basic button' href='/posts/<%= post._id %>'>

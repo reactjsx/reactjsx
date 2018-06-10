@@ -12,16 +12,24 @@ const express = require('express'),
       MongoStore= require('connect-mongo')(session),
       User = require('./models/user'),
       Post = require('./models/post'),
-      postRoute = require('./routes/post');
+      postRoute = require('./routes/post'),
+      nconf = require('nconf');
 
-mongoose.connect('mongodb://techexplained:thaonguyen2604@ds121225.mlab.com:21225/tech_explained');
+nconf.argv().env().file('keys.json');
+const user = nconf.get('mongoUser');
+const pass = nconf.get('mongoPass');
+const host = nconf.get('mongoHost');
+const port = nconf.get('mongoPort');
+const uri = `mongodb://${user}:${pass}@${host}:${port}/${nconf.get('mongoDatabase')}`
+console.log(uri)
+mongoose.connect(uri);
 
 app.use(session({
     secret: "heymanidontgiveafuck",
     resave: false,
     saveUninitialized: false,
     store: new MongoStore({
-      url: 'mongodb://techexplained:thaonguyen2604@ds121225.mlab.com:21225/tech_explained',
+      url: uri,
       ttl: 24 * 60 * 60,
       autoRemove: 'interval',
       autoRemoveInterval: 600 // In minutes. Default
@@ -143,7 +151,7 @@ app.get('/search', (req, res) => {
   });
 });
 
-app.listen(process.env.PORT, process.env.IP, function() {
+app.listen(process.env.PORT || 8080, process.env.IP, function() {
   console.log('Server has started!');
 });
 

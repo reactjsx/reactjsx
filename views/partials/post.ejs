@@ -1,10 +1,10 @@
-<h1><%= post.title %></h1>
+<h1 class='post-title'><%= post.title %></h1>
+<h3 class='min-read'><%= Math.floor(post.content.split(/[ ,.!\\?]+/).length / 200) %> min read</h3>
 <div class="date">
   <%=
     formatDate(post.timestamp);
   %>
 </div>
-<h4><%= post.content.split(/[ ,.!\\?]+/).length % 200 %> min read</h4>
 <div class="post">
   <%- post.content %>
 </div>
