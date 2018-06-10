@@ -135,7 +135,13 @@ app.use('/', postRoute);
 
 
 app.get('/search', (req, res) => {
-  console.log(req.query.searchQuerry);
+  let currentPage;
+  const postCount = 5;
+  if (req.query.page) {
+    currentPage = Number(req.query.page) - 1;
+  } else {
+    currentPage = 0;
+  }
   Post.find({ $text: { $search: req.query.searchQuerry } },
     { score : { $meta: 'textScore' } }
   ).sort( { score: { $meta: "textScore" } })
