@@ -16,13 +16,13 @@
           </div>
           <div class='description'>
             <%
-              let displayPost = post.content.slice(0, Math.min(300, post.content.indexOf('<\/p>')));
+              let displayPost = post.content.slice(0, Math.min(400, post.content.indexOf('<\/p>')));
               displayPost = displayPost.replace(/<\/?\D{1,4}\d?>/g, '');
             %>
             <%- displayPost + '...' %>
           </div>
           <div class='extra'>
-            <a class='ui right floated green basic button' href='/posts/<%= post._id %>'>
+            <a class='ui right floated green basic button' href='/posts/<%= post.url %>'>
               Continue to post
             </a>
           </div>
