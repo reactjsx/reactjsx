@@ -16,7 +16,7 @@
           </div>
           <div class='description'>
             <%
-              let displayPost = post.content.slice(0, post.content.indexOf('<\/p>'));
+              let displayPost = post.content.slice(0, Math.min(300, post.content.indexOf('<\/p>')));
               displayPost = displayPost.replace(/<\/?\D{1,4}\d?>/g, '');
             %>
             <%- displayPost + '...' %>

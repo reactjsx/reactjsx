@@ -61,15 +61,18 @@ route.get('/about', function(req, res) {
 
 route.post('/posts', isLoggedIn, (req, res) => {
   const title = req.sanitize(req.body.title);
+  const timestamp = Date.now();
+  const url = title.toLowerCase().replace(/\s+/g, '-') + '-' + timestamp;
   const category = req.sanitize(req.body.category);
   const content = req.sanitize(req.body.content);
   const tags = req.sanitize(req.body.tags);
     
   const new_post = {
     title: title,
+    url: url,
     category: category,
     content: content,
-    timestamp: Date.now(),
+    timestamp: timestamp,
     tags: tags
   };
     
@@ -77,7 +80,7 @@ route.post('/posts', isLoggedIn, (req, res) => {
     if (err) {
       console.log(err);
     } else {
-      res.redirect(`/posts/${post._id}`);
+      res.redirect(`/posts/${post.url}`);
     }
   });
 });
@@ -86,8 +89,8 @@ route.get('/posts/new', isLoggedIn, (req, res) => {
   res.render('new');
 });
 
-route.get('/posts/:id', function(req, res) {
-  Post.findById(req.params.id, function(err, foundPost) {
+route.get('/posts/:url', function(req, res) {
+  Post.findOne({url: req.params.url}, function(err, foundPost) {
     if (err) {
       console.log(err);
     } else {
