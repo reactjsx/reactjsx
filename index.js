@@ -20,8 +20,7 @@ const user = nconf.get('mongoUser');
 const pass = nconf.get('mongoPass');
 const host = nconf.get('mongoHost');
 const port = nconf.get('mongoPort');
-const uri = `mongodb://${user}:${pass}@${host}:${port}/${nconf.get('mongoDatabase')}`
-console.log(uri)
+const uri = `mongodb://${user}:${pass}@${host}:${port}/${nconf.get('mongoDatabase')}`;
 mongoose.connect(uri);
 
 app.use(session({
@@ -51,89 +50,6 @@ passport.deserializeUser(User.deserializeUser());
 
 app.use('/', postRoute);
 
-// const isLoggedIn = (req, res, next) => {
-//   if (req.isAuthenticated()) {
-//     return next();
-//   }
-//   res.redirect('/login');
-// };
-
-// app.get('/', function(req, res) {
-//   res.redirect('/posts');
-// });
-
-// app.get('/about', function(req, res) {
-//   res.render('about.ejs');
-// });
-
-// app.get('/posts', function(req, res) {
-//   Post.find({}, function(err, foundPosts) {
-//     if (err) {
-//       console.log(err);
-//     } else {
-//       res.render('index', {
-//         posts: foundPosts,
-//         formatDate: utils.formatDate
-//       });
-//     }
-//   });
-// });
-
-// app.get('/posts/new', isLoggedIn, (req, res) => {
-//   res.render('new');
-// });
-
-// app.post('/posts', isLoggedIn, (req, res) => {
-//   const title = req.sanitize(req.body.title);
-//   const category = req.sanitize(req.body.category);
-//   const content = req.sanitize(req.body.content);
-    
-//   const new_post = {
-//     title: title,
-//     category: category,
-//     content: content,
-//     timestamp: Date.now(),
-//     tags: ''
-//   };
-    
-//   Post.create(new_post, (err, post) => {
-//     if (err) {
-//       console.log(err);
-//     } else {
-//       res.redirect('/posts');
-//     }
-//   });
-// });
-
-// app.get('/posts/:id', function(req, res) {
-//   Post.findById(req.params.id, function(err, foundPost) {
-//     if (err) {
-//       console.log(err);
-//     } else {
-//       res.render('show', {
-//         post: foundPost,
-//         formatDate: utils.formatDate
-//       });
-//     }
-//   });
-// });
-
-// app.get('/login', function(req, res) {
-//   res.render('login');
-// });
-
-// app.post('/login', passport.authenticate('local', {
-//   successRedirect: '/posts/new',
-//   failureRedirect: '/login'
-// }), (req, res) => {
-// });
-
-// app.get('/logout', (req, res) => {
-//   req.logout();
-//   res.redirect('/');
-// });
-
-
 app.get('/search', (req, res) => {
   let currentPage;
   const postCount = 5;
@@ -151,8 +67,16 @@ app.get('/search', (req, res) => {
     } else {
       const previousPage = currentPage > 0 ? currentPage : null;
       const nextPage = (currentPage + 1) * postCount < foundPosts.length ? currentPage + 2 : null;
+      const displayPost = foundPosts.slice(currentPage * postCount, (currentPage + 1) * postCount);
+      let tags = [];
+      displayPost.forEach(post => {
+        if (post.tags !== '') {
+	        tags = [...new Set([...tags, ...post.tags.replace(/\s*/g, '').split(',')])];
+        }
+      });
       res.render('index', {
-        posts: foundPosts.slice(currentPage * postCount, (currentPage + 1) * postCount),
+        posts: displayPost,
+        tags: tags,
         formatDate: utils.formatDate,
         currentPage: currentPage + 1,
         previousPage: previousPage,

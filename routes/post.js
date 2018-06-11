@@ -39,11 +39,13 @@ route.get('/posts', function(req, res) {
       const displayPost = foundPosts.slice(currentPage * postCount, (currentPage + 1) * postCount);
       let tags = [];
       displayPost.forEach(post => {
-	tags = [...new Set([...tags, ...post.tags.replace(/\s*/g, '').split(',')])];
+        if (post.tags !== '') {
+	        tags = [...new Set([...tags, ...post.tags.replace(/\s*/g, '').split(',')])];
+        }
       });
       res.render('index', {
         posts: displayPost,
-	tags: tags,
+	      tags: tags,
         formatDate: utils.formatDate,
         currentPage: currentPage + 1,
         previousPage: previousPage,

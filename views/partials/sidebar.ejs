@@ -32,11 +32,7 @@
 <div class="ui section divider"></div>
 <div class="tag-list ui horizontal large list">
   <h1 class="ui center aligned header">Tags</h1>
-  <% tags.forEach(tag => ( %>
-    <a class='item' href='#'>tag</a>
-  <% )) %>
-  <a class="item" href="#">ReactJS</a>
-  <a class="item" href="#">JSX</a>
-  <a class="item" href="#">HTML</a>
-  <a class="item" href="#">semantic</a>
+  <% tags.forEach(tag => { %>
+    <a class="item" href="#"><%= tag %></a>
+  <% }) %>
 </div>
