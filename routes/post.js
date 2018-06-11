@@ -36,8 +36,14 @@ route.get('/posts', function(req, res) {
     } else {
       const previousPage = currentPage > 0 ? currentPage : null;
       const nextPage = (currentPage + 1) * postCount < foundPosts.length ? currentPage + 2 : null;
+      const displayPost = foundPosts.slice(currentPage * postCount, (currentPage + 1) * postCount);
+      let tags = [];
+      displayPost.forEach(post => {
+	tags = [...new Set([...tags, ...post.tags.replace(/\s*/g, '').split(',')])];
+      });
       res.render('index', {
-        posts: foundPosts.slice(currentPage * postCount, (currentPage + 1) * postCount),
+        posts: displayPost,
+	tags: tags,
         formatDate: utils.formatDate,
         currentPage: currentPage + 1,
         previousPage: previousPage,
@@ -55,13 +61,14 @@ route.post('/posts', isLoggedIn, (req, res) => {
   const title = req.sanitize(req.body.title);
   const category = req.sanitize(req.body.category);
   const content = req.sanitize(req.body.content);
+  const tags = req.sanitize(req.body.tags);
     
   const new_post = {
     title: title,
     category: category,
     content: content,
     timestamp: Date.now(),
-    tags: ''
+    tags: tags
   };
     
   Post.create(new_post, (err, post) => {
