@@ -93,6 +93,10 @@ div.ui.items.segment {
   font-size: 16px !important;
 }
 
+.post .source {
+  font-family:Courier New,Courier,Lucida Sans Typewriter,Lucida Typewriter,monospace;
+}
+
 .post .highlight {
   background: lightblue;
 }
