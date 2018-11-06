@@ -15,11 +15,7 @@
             </span>
           </div>
           <div class='description'>
-            <%
-              let displayPost = post.content.slice(0, Math.min(400, post.content.indexOf('<\/p>')));
-              displayPost = displayPost.replace(/<\/?\D{1,4}\d?>/g, '');
-            %>
-            <%- displayPost + '...' %>
+            <%- post.excerpt + ' ...' %>
           </div>
           <div class='extra'>
             <a class='ui right floated green basic button' href='/posts/<%= post.url %>'>

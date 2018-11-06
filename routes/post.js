@@ -64,6 +64,7 @@ route.post('/posts', isLoggedIn, (req, res) => {
   const timestamp = Date.now();
   const url = title.toLowerCase().replace(/\s+/g, '-') + '-' + timestamp;
   const category = req.sanitize(req.body.category);
+  const excerpt = req.sanitize(req.body.excerpt);
   const content = req.sanitize(req.body.content);
   const tags = req.sanitize(req.body.tags);
     
@@ -71,6 +72,7 @@ route.post('/posts', isLoggedIn, (req, res) => {
     title: title,
     url: url,
     category: category,
+    excerpt: excerpt,
     content: content,
     timestamp: timestamp,
     tags: tags

@@ -5,6 +5,7 @@ const postSchema = mongoose.Schema({
   url: String,
   timestamp: Number,
   content: String,
+  excerpt: String,
   category: String,
   tags: String
 });
